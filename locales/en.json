@@ -1,0 +1,13 @@
+{
+  "nav.services": "Services",
+  "nav.about": "About",
+  "nav.contact": "Contact",
+  "hero.title": "Full-Cycle Digital Studio",
+  "hero.subtitle": "We provide maximum services in Web2 and Web3: design, layout, backend, advertising, content management, creatives.",
+  "hero.cta": "Get in Touch",
+  "contact.title": "Contact Us",
+  "contact.name": "Name",
+  "contact.email": "Email",
+  "contact.message": "Message",
+  "contact.send": "Send"
+}

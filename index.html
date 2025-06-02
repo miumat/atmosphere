@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Atmosphere is a full-cycle digital studio offering design, development, SEO, and advertising services." />
+  <meta property="og:title" content="Atmosphere — Digital Studio" />
+  <meta property="og:description" content="We help businesses grow in the online space." />
+  <meta property="og:image" content="assets/preview.jpg" />
+  <title>Atmosphere — Digital Studio</title>
+  <link rel="icon" href="assets/logo-light.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+  
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Main Header with logo, navigation, theme toggle and language selector -->
+  <header class="site-header" aria-label="Main site header">
+    <div class="container">
+      <a href="/" class="logo" aria-label="Homepage">
+        <img class="theme-logo" src="assets/logo-light.svg" alt="Atmosphere Logo">
+      </a>
+
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#services" data-i18n="nav.services">Services</a></li>
+          <li><a href="#about" data-i18n="nav.about">About</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-controls">
+        <!-- Theme toggle button -->
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <img src="assets/icons/moon.svg" alt="Dark mode" class="theme-icon dark-icon">
+          <img src="assets/icons/sun.svg" alt="Light mode" class="theme-icon light-icon">
+        </button>
+
+        <!-- Language selector -->
+        <div class="lang-select-wrapper">
+          <label for="lang-select" class="visually-hidden">Language</label>
+          <select class="lang-select" id="lang-select" aria-label="Select language">
+            <option value="en" data-icon="assets/icons/en-flag1.svg">English</option>
+            <option value="ua" data-icon="assets/icons/ua-flag1.svg">Українська</option>
+            <option value="ru" data-icon="assets/icons/ru-flag1.svg">Русский</option>
+          </select>
+          <span class="selected-lang-flag">
+            <img src="assets/icons/en-flag.svg" alt="Language" class="lang-flag-icon">
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="feedback-modal" id="feedbackModal">
+      <div class="modal-wrapper">
+        <div class="modal-left">
+          <div class="left-inner">
+            <h2 data-i18n="feedback.title">Let's <br>connect to discuss<br> details</h2>
+            <div class="details-list">
+              <p data-i18n="feedback.also">Also:</p>
+              <ul>
+                <li data-i18n="feedback.benefit1">We'll tell you about opportunities</li>
+                <li data-i18n="feedback.benefit2">We'll analyze your current website</li>
+                <li data-i18n="feedback.benefit3">We'll define project goals</li>
+                <li data-i18n="feedback.benefit4">We'll discuss development timeline</li>
+                <li data-i18n="feedback.benefit5">We'll send 3 proposal options</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="modal-right">
+          <span class="close-btn" id="closeModal">&times;</span>
+          <p class="contact-label" data-i18n="feedback.contact_preference">How would you like to be contacted?</p>
+          <div class="contact-options" id="contactOptions">
+            <button class="contact-btn selected" data-method="call" data-i18n="feedback.call">Call</button>
+            <button class="contact-btn" data-method="Telegram" data-i18n="feedback.telegram">Telegram</button>
+            <button class="contact-btn" data-method="WhatsApp" data-i18n="feedback.whatsapp">WhatsApp</button>
+          </div>
+          <form id="feedbackForm">
+            <input type="text" name="name" autocomplete="no" data-i18n-placeholder="feedback.name" placeholder="Your name" required>
+            <input type="tel" name="phone" autocomplete="no" data-i18n-placeholder="feedback.phone" placeholder="Phone number" required>
+            <input type="hidden" name="contactMethod" id="contactMethod" value="call">
+            <button type="submit" data-i18n="feedback.submit_btn">Contact me</button>
+          </form>
+          <p class="agreement-note" data-i18n="feedback.agreement">
+            By clicking "Contact me" you agree to our Privacy Policy
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Hero section with main call-to-action -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-left">
+            <h1 id="hero-title" data-i18n="hero.title">
+              We create <span class="highlight">a digital</span> atmosphere
+            </h1>
+            <p class="tight" data-i18n="hero.subtitle">We help businesses develop in the online space.</p>
+            <p class="tight" data-i18n="hero.text">
+              We prepare powerful digital strategies, develop selling websites, launch effective advertising and promote brands on social networks.
+            </p>
+
+            <!-- Payment methods display -->
+            <div class="payment-methods" aria-label="Accepted payment methods">
+              <div class="payment-icons">
+                <img src="assets/payments/bitcoin.svg" alt="Bitcoin">
+                <img src="assets/payments/ethereum.svg" alt="Ethereum">
+                <img src="assets/payments/usdt.svg" alt="USDT">
+                <img src="assets/payments/tron.svg" alt="Tron">
+              </div>
+              <p class="payment-text" data-i18n="payment.text">
+                We accept <span class="highlight">50+</span> payment methods
+              </p>
+            </div>
+
+            <a href="#" class="btn-primary feedback-btn" data-i18n="hero.cta">Get in Touch</a>
+          </div>
+
+          <div class="hero-right" aria-hidden="true">
+            <div class="blob-bg"></div>
+            <img src="assets/astronaut.png" alt="Astronaut" class="astronaut">
+          </div>
+        </div>
+      </div>  
+    </section>
+
+    <!-- Services section presenting core offerings -->
+    <section class="services-section" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <h2 id="services-title" class="visually-hidden">Our Services</h2>
+        <div class="services-grid">
+          <article class="service-item">
+            <h3 data-i18n="services.branding.title">Branding & Design</h3>
+            <ul>
+              <li data-i18n="services.branding.item1">Logo and corporate identity development</li>
+              <li data-i18n="services.branding.item2">Presentations and promotional materials</li>
+            </ul>
+          </article>
+          <article class="service-item">
+            <h3 data-i18n="services.layout.title">Frontend Development</h3>
+            <ul>
+              <li data-i18n="services.layout.item1">Landings, corporate websites, online stores</li>
+              <li data-i18n="services.layout.item2">User-friendly interface, responsive design, SEO optimization</li>
+            </ul>
+          </article>
+          <article class="service-item">
+            <h3 data-i18n="services.ads.title">Advertising</h3>
+            <ul>
+              <li data-i18n="services.ads.item1">Google Ads, FB/INST/TG setup</li>
+              <li data-i18n="services.ads.item2">Audience analysis and conversion optimization</li>
+            </ul>
+          </article>
+          <article class="service-item">
+            <h3 data-i18n="services.seo.title">SEO Promotion</h3>
+            <ul>
+              <li data-i18n="services.seo.item1">Comprehensive search engine promotion</li>
+              <li data-i18n="services.seo.item2">Organic traffic growth</li>
+              <li data-i18n="services.seo.item3">Content and meta tags optimization</li>
+            </ul>
+          </article>
+          <article class="service-item">
+            <h3 data-i18n="services.content.title">Content Marketing</h3>
+            <ul>
+              <li data-i18n="services.content.item1">Social media management, content creation, audience engagement</li>
+              <li data-i18n="services.content.item2">Promotion strategy development</li>
+            </ul>
+          </article>
+          <article class="service-item">
+            <h3 data-i18n="services.development.title">Development</h3>
+            <ul>
+              <li data-i18n="services.development.item1">Web and mobile applications development</li>
+              <li data-i18n="services.development.item2">Chatbots and TMA development</li>
+              <li data-i18n="services.development.item3">Database integration and back-end development</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- Features section emphasizing core benefits -->
+    <section class="features-section" id="features" aria-labelledby="features-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-icon" aria-hidden="true">
+            <img src="assets/icons/info1.svg" alt="" />
+          </span>
+          <h2 id="features-title" data-i18n="features.title">
+            Give your business a second wind
+          </h2>
+        </header>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="icon-wrapper">
+              <img src="assets/icons/satellite.svg" alt="Craft expertise icon" />
+            </div>
+            <div class="feature-card-content">
+              <h3 data-i18n="features.item1.title">We Know Our Craft</h3>
+              <p data-i18n="features.item1.text">
+                Professionalism honed over years: we make complex things simple.
+              </p>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon-wrapper">
+              <img src="assets/icons/saturn.svg" alt="Creative projects icon" />
+            </div>
+            <div class="feature-card-content">
+              <h3 data-i18n="features.item2.title">We Create With Soul</h3>
+              <p data-i18n="features.item2.text">
+                Creativity that works: projects that stand out from competitors.
+              </p>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon-wrapper">
+              <img src="assets/icons/rocket.svg" alt="Timely delivery icon" />
+            </div>
+            <div class="feature-card-content">
+              <h3 data-i18n="features.item3.title">We Deliver On Time</h3>
+              <p data-i18n="features.item3.text">
+                Clear deadlines - we meet them without hiccups.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <footer class="section-footer">
+          <h2 data-i18n="features.footer">
+            <span class="highlight">
+              A whole <span class="green">galaxy of technologies</span>
+            </span> in our arsenal
+          </h2>
+        </footer>
+      </div>
+    </section>
+    <!-- Tech stack section presenting technologies used -->
+    <section class="tech-section" id="tech" aria-labelledby="tech-title">
+      <div class="container">
+        <h2 id="tech-title" class="visually-hidden">Technology Stack</h2>
+
+        <!-- Tech categories structured in rows -->
+        <div class="tech-row">
+          <div class="tech-column">
+            <h4 data-i18n="tech.languages">Programming Languages</h4>
+            <div class="category">
+              <div class="tech-item"><img src="assets/icons/js.svg" alt="JavaScript"><span>JavaScript</span></div>
+              <div class="tech-item"><img src="assets/icons/ts.svg" alt="TypeScript"><span>TypeScript</span></div>
+              <div class="tech-item"><img src="assets/icons/php.svg" alt="PHP"><span>PHP</span></div>
+              <div class="tech-item"><img src="assets/icons/python.svg" alt="Python"><span>Python</span></div>
+            </div>
+          </div>
+
+          <div class="tech-column">
+            <h4 data-i18n="tech.web_basics">Web Basics</h4>
+            <div class="category">
+              <div class="tech-item"><img src="assets/icons/html.svg" alt="HTML"><span>HTML</span></div>
+              <div class="tech-item"><img src="assets/icons/css.svg" alt="CSS"><span>CSS</span></div>
+              <div class="tech-item"><img src="assets/icons/json.svg" alt="JSON"><span>JSON</span></div>
+            </div>
+          </div>
+
+          <div class="tech-column">
+            <h4 data-i18n="tech.frontend">Frontend Ecosystem</h4>
+            <div class="category">
+              <div class="tech-item"><img src="assets/icons/react.svg" alt="React"><span>React</span></div>
+              <div class="tech-item"><img src="assets/icons/vue.svg" alt="Vue.js"><span>Vue.js</span></div>
+              <div class="tech-item"><img src="assets/icons/angular.svg" alt="Angular"><span>Angular</span></div>
+              <div class="tech-item"><img src="assets/icons/bootstrap.svg" alt="Bootstrap"><span>Bootstrap</span></div>
+              <div class="tech-item"><img src="assets/icons/tailwind.svg" alt="Tailwind CSS"><span>Tailwind CSS</span></div>
+              <div class="tech-item"><img src="assets/icons/material.svg" alt="Material UI"><span>Material UI</span></div>
+              <div class="tech-item"><img src="assets/icons/sass.svg" alt="Sass"><span>Sass</span></div>
+            </div>
+          </div>
+
+          <div class="tech-column">
+            <h4 data-i18n="tech.tools">Tools</h4>
+            <div class="category">
+              <div class="tech-item"><img src="assets/icons/github.svg" alt="GitHub"><span>GitHub</span></div>
+              <div class="tech-item"><img src="assets/icons/gitlab.svg" alt="GitLab"><span>GitLab</span></div>
+              <div class="tech-item"><img src="assets/icons/webpack.svg" alt="Webpack"><span>Webpack</span></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Вторая строка -->
+        <div class="tech-row">
+          <div class="tech-column">
+            <h4 data-i18n="tech.cloud">Cloud & Infrastructure</h4>
+            <div class="category">
+              <div class="tech-item"><img src="assets/icons/aws.svg" alt=""><span>AWS</span></div>
+              <div class="tech-item"><img src="assets/icons/gcp.svg" alt=""><span>GoogleCloud</span></div>
+              <div class="tech-item"><img src="assets/icons/azure.svg" alt=""><span>Azure</span></div>
+              <div class="tech-item"><img src="assets/icons/heroku.svg" alt=""><span>Heroku</span></div>
+              <div class="tech-item"><img src="assets/icons/docker.svg" alt=""><span>Docker</span></div>
+              <div class="tech-item"><img src="assets/icons/kubernetes.svg" alt=""><span>Kubernetes</span></div>
+            </div>
+          </div>
+
+          <div class="tech-column">  
+            <h4 data-i18n="tech.backend">Backend Stack</h4>
+            <div class="category">
+              <div class="tech-item"><img src="assets/icons/nodejs.svg" alt=""><span>Node.js</span></div>
+              <div class="tech-item"><img src="assets/icons/expressjs.svg" alt=""><span>Express.js</span></div>
+              <div class="tech-item"><img src="assets/icons/laravel.svg" alt=""><span>Laravel</span></div>
+              <div class="tech-item"><img src="assets/icons/django.svg" alt=""><span>Django</span></div>
+              <div class="tech-item"><img src="assets/icons/flask.svg" alt=""><span>Flask</span></div>
+            </div>
+          </div>
+
+          <div class="tech-column">  
+            <h4 data-i18n="tech.cms">CMS & E-commerce</h4>
+            <div class="category">
+              <div class="tech-item"><img src="assets/icons/wordpress.svg" alt=""><span>WordPress</span></div>
+              <div class="tech-item"><img src="assets/icons/joomla.svg" alt=""><span>Joomla</span></div>
+              <div class="tech-item"><img src="assets/icons/drupal.svg" alt=""><span>Drupal</span></div>
+              <div class="tech-item"><img src="assets/icons/modx.svg" alt=""><span>ModX</span></div>
+              <div class="tech-item"><img src="assets/icons/opencart.svg" alt=""><span>OpenCart</span></div>
+              <div class="tech-item"><img src="assets/icons/magento.svg" alt=""><span>Magento</span></div>
+            </div>
+          </div>    
+        </div>
+
+        <!-- Третья строка -->
+        <div class="tech-row">
+          <div class="tech-column"> 
+            <h4 data-i18n="tech.api">API</h4>
+            <div class="category">
+              <div class="tech-item"><img src="assets/icons/restapi.svg" alt=""><span>REST API</span></div>
+              <div class="tech-item"><img src="assets/icons/graphql.svg" alt=""><span>GraphQL</span></div>
+            </div>
+          </div>  
+
+          <div class="tech-column"> 
+            <h4 data-i18n="tech.databases">Databases</h4>
+            <div class="category">
+              <div class="tech-item"><img src="assets/icons/mysql.svg" alt=""><span>MySQL</span></div>
+              <div class="tech-item"><img src="assets/icons/postgresql.svg" alt=""><span>PostgreSQL</span></div>
+              <div class="tech-item"><img src="assets/icons/sqlite.svg" alt=""><span>SQLite</span></div>
+              <div class="tech-item"><img src="assets/icons/mongodb.svg" alt=""><span>MongoDB</span></div>
+              <div class="tech-item"><img src="assets/icons/redis.svg" alt=""><span>Redis</span></div>
+            </div>
+          </div>
+          
+          <div class="tech-column">   
+            <h4 data-i18n="tech.design">Design Tools</h4>
+            <div class="category">
+              <div class="tech-item"><img src="assets/icons/photoshop.svg" alt=""><span>Photoshop</span></div>
+              <div class="tech-item"><img src="assets/icons/illustrator.svg" alt=""><span>Illustrator</span></div>
+              <div class="tech-item"><img src="assets/icons/adobe-xd.svg" alt=""><span>Adobe XD</span></div>
+              <div class="tech-item"><img src="assets/icons/figma.svg" alt=""><span>Figma</span></div>
+              <div class="tech-item"><img src="assets/icons/sketch.svg" alt=""><span>Sketch</span></div>
+            </div>
+          </div>
+
+          <div class="tech-column"> 
+            <h4 data-i18n="tech.web3">Web3 Tools</h4>
+            <div class="category">
+              <div class="tech-item"><img src="assets/icons/solidity.svg" alt=""><span>Solidity</span></div>
+              <div class="tech-item"><img src="assets/icons/walletconnect.svg" alt=""><span>WalletConnect</span></div>
+              <div class="tech-item"><img src="assets/icons/metamask.svg" alt=""><span>MetaMask</span></div>
+              <div class="tech-item"><img src="assets/icons/ipfs.svg" alt=""><span>IPFS</span></div>
+            </div>
+          </div>  
+        </div>
+      </div>  
+    </section>
+
+    <!-- Banner section with call-to-action messaging -->
+    <section class="banner-container" id="banner" aria-labelledby="banner-title">
+      <div class="container">
+        <div class="banner main-banner">
+          <div class="banner-content">
+            <h3 id="banner-title" data-i18n="banner.title">
+              From <span>MVP</span> to ecosystem
+            </h3>
+            <p class="subtitle" data-i18n="banner.subtitle">
+              Tailored to your budget, needs and scale.
+            </p>
+            <p class="description" data-i18n="banner.description">
+              From advanced landing pages to multifunctional platforms...
+            </p>
+            <button class="btn-secondary feedback-btn" data-i18n="banner.button">Contact us</button>
+          </div>
+          <img src="assets/shuttle.png" alt="Rocket launch illustration" class="banner-image" />
+        </div>
+      </div>  
+    </section>
+    <!-- Advantages section outlining project benefits -->
+    <section class="advantage" id="advantages" aria-labelledby="advantage-title">
+      <div class="container">
+        <header class="advantage-text">
+          <img src="assets/icons/info1.svg" alt="Information icon" class="advantage-info-icon" />
+          <h2 id="advantage-title" class="advantage-title" data-i18n="advantage.title">
+            Everything to make <span class="green">your project</span> not just exist, but generate profit.
+          </h2>
+        </header>
+
+        <div class="advantage-grid">
+          <article class="advantage-item">
+            <div class="advantage-head">
+              <div class="advantage-icon">
+                <img src="assets/icons/maximize.svg" alt="Responsiveness icon" />
+              </div>
+              <h3 data-i18n="advantage.responsiveness_title">Responsiveness</h3>
+            </div>
+            <p data-i18n="advantage.responsiveness_text">
+              Flawless display on all devices — your site always looks professional.
+            </p>
+          </article>
+
+          <article class="advantage-item">
+            <div class="advantage-head">
+              <div class="advantage-icon">
+                <img src="assets/icons/notes.svg" alt="Color solutions icon" />
+              </div>
+              <h3 data-i18n="advantage.colors_title">Color Solutions</h3>
+            </div>
+            <p data-i18n="advantage.colors_text">
+              Ergonomic palettes that engage rather than irritate.
+            </p>
+          </article>
+
+          <article class="advantage-item">
+            <div class="advantage-head">
+              <div class="advantage-icon">
+                <img src="assets/icons/language.svg" alt="Multilingual icon" />
+              </div>
+              <h3 data-i18n="advantage.multilingual_title">Multilingual</h3>
+            </div>
+            <p data-i18n="advantage.multilingual_text">
+              Breaking language barriers — we communicate with clients in their native language.
+            </p>
+          </article>
+
+          <article class="advantage-item">
+            <div class="advantage-head">
+              <div class="advantage-icon">
+                <img src="assets/icons/bolt.svg" alt="Speed icon" />
+              </div>
+              <h3 data-i18n="advantage.speed_title">Speed</h3>
+            </div>
+            <p data-i18n="advantage.speed_text">
+              Lightning-fast loading: we keep users without annoying waits.
+            </p>
+          </article>
+
+          <article class="advantage-item">
+            <div class="advantage-head">
+              <div class="advantage-icon">
+                <img src="assets/icons/shield.svg" alt="Optimization icon" />
+              </div>
+              <h3 data-i18n="advantage.optimization_title">Optimization</h3>
+            </div>
+            <p data-i18n="advantage.optimization_text">
+              Built-in SEO framework: the platform is ready to promote your business in search.
+            </p>
+          </article>
+
+          <article class="advantage-item">
+            <div class="advantage-head">
+              <div class="advantage-icon">
+                <img src="assets/icons/key.svg" alt="Security icon" />
+              </div>
+              <h3 data-i18n="advantage.security_title">Security</h3>
+            </div>
+            <p data-i18n="advantage.security_text">
+              Bank-level protection: HTTPS, DDoS filtering and regular backups.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- Deep contact section with working hours, social links and QR -->
+    <section class="deep" id="contact" aria-labelledby="deep-title">
+      <div class="container">
+        <div class="deep-container">
+
+          <!-- Contact description -->
+          <div class="deep-contact">
+            <h3 id="deep-title" data-i18n="info.title">Anything else?</h3>
+            <p data-i18n="info.text">We'll discuss the rest in private correspondence.</p>
+            <button class="btn-primary feedback-btn" data-i18n="info.button">Discuss project</button>
+          </div>
+
+          <!-- Info blocks: working hours and night response -->
+          <div class="deep-info">
+            <div class="deep-info-inline">
+              <div class="deep-info-row">
+                <div class="deep-icon green"><div class="deep-icon-small"></div></div>
+                <div>
+                  <h4 data-i18n="info.work_hours.title">Working hours</h4>
+                  <p data-i18n="info.work_hours.text">24/7</p>
+                </div>
+              </div>
+              <div class="deep-info-row">
+                <div class="deep-icon yellow"><div class="deep-icon-small"></div></div>
+                <div>
+                  <h4 data-i18n="info.night_response.title">Night response</h4>
+                  <p data-i18n="info.night_response.text">Within 3 hours</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social media links -->
+            <div class="deep-socials" aria-label="Social media links">
+              <a href="#" class="telegram" aria-label="Telegram">
+                <img src="assets/icons/telegram.svg" alt="Telegram icon" />
+              </a>
+              <a href="#" class="discord" aria-label="Discord">
+                <img src="assets/icons/discord.svg" alt="Discord icon" />
+              </a>
+              <a href="#" class="instagram" aria-label="Instagram">
+                <img src="assets/icons/instagram.svg" alt="Instagram icon" />
+              </a>
+            </div>
+          </div>
+
+          <!-- QR code section -->
+          <a href="/" class="logo" aria-label="Homepage">
+            <img class="theme-logo" src="assets/logo-light.svg" alt="Atmosphere Logo">
+          </a>
+
+        </div>
+      </div>
+    </section> 
+    
+    <!-- Contact form section 
+    <section class="contact-form-section" aria-labelledby="contact-form-title">
+      <div class="container">
+        <h2 id="contact-form-title" data-i18n="contact.title">Contact Us</h2>
+        <form id="contactForm" class="contact-form" novalidate>
+          <label for="name" data-i18n="contact.name">Name</label>
+          <input type="text" id="name" name="name" required placeholder="Your name" />
+
+          <label for="email" data-i18n="contact.email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="you@example.com" />
+
+          <label for="message" data-i18n="contact.message">Message</label>
+          <textarea id="message" name="message" rows="4" required placeholder="Your message..."></textarea>
+
+          <button type="submit" class="btn-primary" data-i18n="contact.send">Send</button>
+        </form>
+      </div>
+    </section>
+    -->
+  </main>
+
+  <!-- Optional: Add a proper <footer> section for site-wide links and info
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="container">
+      <p>&copy; 2025 Atmosphere. All rights reserved.</p>
+    </div>
+  </footer>
+  -->
+</body>
+</html>
