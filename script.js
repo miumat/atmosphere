@@ -627,6 +627,56 @@ document.addEventListener('DOMContentLoaded', () => {
     return { init };
   })();
 
+  // ========== Модуль бургер-меню ==========
+  const BurgerMenuManager = (() => {
+    let burgerBtn, navMenu, navLinks;
+
+    function init() {
+      burgerBtn = document.querySelector('.burger-btn');
+      navMenu = document.querySelector('.main-nav');
+      navLinks = document.querySelectorAll('.main-nav a');
+
+      if (!burgerBtn || !navMenu) return;
+
+      // Инициализация событий
+      burgerBtn.addEventListener('click', toggleMenu);
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', closeOnLinkClick);
+      });
+
+      // Закрытие при клике вне меню
+      document.addEventListener('click', closeOnOutsideClick);
+    }
+
+    function toggleMenu() {
+      burgerBtn.classList.toggle('active');
+      navMenu.classList.toggle('active');
+      document.body.classList.toggle('no-scroll'); // Блокировка скролла
+    }
+
+    function closeMenu() {
+      burgerBtn.classList.remove('active');
+      navMenu.classList.remove('active');
+      document.body.classList.remove('no-scroll');
+    }
+
+    function closeOnLinkClick(e) {
+      if (window.innerWidth <= 768) { // Только для мобильных
+        closeMenu();
+      }
+    }
+
+    function closeOnOutsideClick(e) {
+      const isClickInside = navMenu.contains(e.target) || burgerBtn.contains(e.target);
+      if (!isClickInside && navMenu.classList.contains('active')) {
+        closeMenu();
+      }
+    }
+
+    return { init };
+  })();
+
   // ========== Инициализация всех модулей ==========
   function initApp() {
     ThemeManager.init();
@@ -634,6 +684,7 @@ document.addEventListener('DOMContentLoaded', () => {
     AnimationManager.init();
     FormManager.init();
     FeedbackModalManager.init();
+    BurgerMenuManager.init();
   }
 
   initApp();

@@ -16,14 +16,20 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- Main Header with logo, navigation, theme toggle and language selector -->
   <header class="site-header" aria-label="Main site header">
     <div class="container">
       <a href="/" class="logo" aria-label="Homepage">
         <img class="theme-logo" src="assets/logo-light.svg" alt="Atmosphere Logo">
       </a>
 
-      <nav aria-label="Main navigation">
+      <!-- Бургер-кнопка для мобильных -->
+      <button class="burger-btn" aria-label="Toggle menu" aria-expanded="false">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </button>
+
+      <nav class="main-nav" aria-label="Main navigation">
         <ul>
           <li><a href="#services" data-i18n="nav.services">Services</a></li>
           <li><a href="#about" data-i18n="nav.about">About</a></li>
@@ -53,7 +59,6 @@
       </div>
     </div>
   </header>
-
   <main>
     <div class="feedback-modal" id="feedbackModal">
       <div class="modal-wrapper">
