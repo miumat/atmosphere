@@ -39,7 +39,7 @@ body.light {
   margin: 0 auto;
   padding: 0 15px;
   max-width: var(--max-width);
-  /* border: 1px solid var(--green); */
+  border: 1px solid var(--green);
 }
 
 .visually-hidden {
@@ -100,6 +100,10 @@ nav a::after {
   height: 2px;
   background: var(--highlight-color);
   transition: width var(--transition);
+}
+
+.main-nav {
+  display: flex;
 }
 
 body.light nav a::after {
@@ -1530,6 +1534,7 @@ body.light .deep-info-row p {
   
   .main-nav.active {
     right: 0;
+    display: block;
   }
 
   body.light .main-nav {
@@ -1560,6 +1565,8 @@ body.light .deep-info-row p {
   
   .header-controls {
     /* margin-top: 1rem; */
+    display: flex;
+    justify-content: center;
   }
   
   .tech-section {
