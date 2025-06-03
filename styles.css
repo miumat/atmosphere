@@ -39,7 +39,7 @@ body.light {
   margin: 0 auto;
   padding: 0 15px;
   max-width: var(--max-width);
-  border: 1px solid var(--green);
+  /* border: 1px solid var(--green); */
 }
 
 .visually-hidden {
@@ -61,14 +61,15 @@ body.light {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
   margin: 0 auto;
 }
 
 .logo img {
+  display: flex;
   width: 40px;
   height: auto;
-  margin-top: 15px;
+  /* margin-top: 15px; */
 }
 
 nav ul {
@@ -126,6 +127,10 @@ nav a:hover::after {
   background: var(--light);
   margin: 5px 0;
   transition: all 0.3s ease;
+}
+
+body.light .burger-line {
+  background: var(--dark);
 }
 
 .header-controls {
@@ -1498,7 +1503,7 @@ body.light .deep-info-row p {
 
 @media (max-width: 768px) {
   .site-header .container {
-    flex-direction: column;
+    justify-content: space-between;
   }
   
   nav ul {
@@ -1526,11 +1531,14 @@ body.light .deep-info-row p {
   .main-nav.active {
     right: 0;
   }
+
+  body.light .main-nav {
+    background: var(--bg-light);
+  }
   
   .main-nav ul {
     flex-direction: column;
     padding: 2rem;
-    margin-top: 55px;
   }
 
   .no-scroll {
@@ -1551,7 +1559,7 @@ body.light .deep-info-row p {
   }
   
   .header-controls {
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
   }
   
   .tech-section {
