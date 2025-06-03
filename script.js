@@ -677,6 +677,37 @@ document.addEventListener('DOMContentLoaded', () => {
     return { init };
   })();
 
+  // ========== Модуль анимации .service-item при скролле ==========
+  const ServiceItemAnimator = (() => {
+    let observer;
+
+    function init() {
+      const items = document.querySelectorAll('.service-item');
+      if (!items.length) return;
+
+      observer = new IntersectionObserver(onIntersection, {
+        threshold: 0.15,
+      });
+
+      items.forEach(item => observer.observe(item));
+    }
+
+    function onIntersection(entries) {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          // Плавное поочерёдное появление
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 150);
+
+          observer.unobserve(entry.target); // Отключить отслеживание после появления
+        }
+      });
+    }
+
+    return { init };
+  })();
+
   // ========== Инициализация всех модулей ==========
   function initApp() {
     ThemeManager.init();
@@ -685,6 +716,7 @@ document.addEventListener('DOMContentLoaded', () => {
     FormManager.init();
     FeedbackModalManager.init();
     BurgerMenuManager.init();
+    ServiceItemAnimator.init();
   }
 
   initApp();
