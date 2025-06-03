@@ -39,6 +39,7 @@ body.light {
   margin: 0 auto;
   padding: 0 15px;
   max-width: var(--max-width);
+  margin-top: 15px;
   /* border: 1px solid var(--green); */
 }
 
@@ -63,6 +64,7 @@ body.light {
   align-items: center;
   gap: 1rem;
   margin: 0 auto;
+  margin-top: 10px;
 }
 
 .logo img {
@@ -1628,7 +1630,7 @@ body.light .deep-info-row p {
   }
 
   .tech-item {
-    width: 50px;
+    width: 55px;
   }
 
   .deep-container {
