@@ -39,6 +39,7 @@ body.light {
   margin: 0 auto;
   padding: 0 15px;
   max-width: var(--max-width);
+  border: 1px solid var(--green);
 }
 
 .visually-hidden {
@@ -103,6 +104,7 @@ nav a::after {
 
 .main-nav {
   display: flex;
+  gap: 26rem;
 }
 
 body.light nav a::after {
@@ -1469,6 +1471,11 @@ body.light .deep-info-row p {
 
   .container {
     max-width: 780px;
+  }
+
+  .main-nav {
+    display: flex;
+    gap: 13rem;
   }
 
   .hero-content {
