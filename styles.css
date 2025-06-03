@@ -39,7 +39,6 @@ body.light {
   margin: 0 auto;
   padding: 0 15px;
   max-width: var(--max-width);
-  border: 1px solid var(--green);
 }
 
 .visually-hidden {
