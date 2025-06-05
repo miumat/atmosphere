@@ -46,7 +46,7 @@ body.light {
   max-width: 100%;
   margin-top: 3rem;
   box-sizing: border-box;
-  /* border: 1px solid var(--green); */
+  border: 1px solid var(--green);
 }
 
 .visually-hidden {
@@ -438,14 +438,14 @@ body.light .feedback-modal {
   align-items: center;
   flex-wrap: wrap;
   gap: 5rem;
-  max-width: var(--max-width);
-  margin: 0 auto;
+  /* max-width: var(--max-width); */ 
+  /* margin: 0 auto; */ 
   width: 100%;
   /* border: 1px solid var(--light); */
 }
 
 .hero-left {
-  flex: 1 1 50%;
+  /* flex: 1 1 50%; */
   max-width: 600px;
 }
 
@@ -454,7 +454,7 @@ body.light .feedback-modal {
 }
 
 .hero-right {
-  flex: 1 1 40%;
+  /* flex: 1 1 40%; */
   max-width: 600px;
   position: relative;
   display: flex;
@@ -660,7 +660,7 @@ body.light .service-item li {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto;
 }
 
@@ -720,7 +720,7 @@ body.light .service-item li::before {
   gap: 1rem;
   margin-bottom: 2rem;
   text-align: left;
-  max-width: var(--max-width);
+  /* max-width: var(--max-width); */
   margin-left: auto;
   margin-right: auto;
   flex-wrap: wrap;
@@ -769,7 +769,7 @@ body.light .section-icon:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 2rem;
-  max-width: var(--max-width);
+  /* max-width: var(--max-width); */
   margin: 0 auto 3rem auto;
 }
 
@@ -850,7 +850,7 @@ body.light .feature-card img {
 
 .section-footer {
   text-align: center;
-  max-width: var(--max-width);
+  /* max-width: var(--max-width); */
   margin: 0 auto;
 }
 
@@ -1123,7 +1123,7 @@ body.light .banner button {
   justify-content: flex-start;
   gap: 16px;
   margin-bottom: 40px;
-  max-width: 1000px;
+  /* max-width: 1000px; */
 }
 
 .advantage-info-icon {
@@ -1174,9 +1174,9 @@ body.light .advantage-title span {
 
 .advantage-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 32px;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto;
 }
 
