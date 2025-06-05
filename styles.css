@@ -28,6 +28,11 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
+body, html {
+  width: 100%;
+  overflow-x: hidden; /* скрывает горизонтальный скролл */
+}
+
 body.light {
   background: var(--bg-light);
   color: var(--text-light);
@@ -38,8 +43,9 @@ body.light {
   width: 100%;
   margin: 0 auto;
   padding: 0 15px;
-  max-width: var(--max-width);
+  max-width: 100%;
   margin-top: 3rem;
+  box-sizing: border-box;
   /* border: 1px solid var(--green); */
 }
 
