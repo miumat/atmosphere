@@ -723,7 +723,7 @@ body.light .service-item li::before {
   /* max-width: var(--max-width); */
   margin-left: auto;
   margin-right: auto;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 
 .section-header h2 {
