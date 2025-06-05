@@ -39,7 +39,7 @@ body.light {
   margin: 0 auto;
   padding: 0 15px;
   max-width: var(--max-width);
-  margin-top: 15px;
+  margin-top: 3rem;
   /* border: 1px solid var(--green); */
 }
 
@@ -662,7 +662,7 @@ body.light .service-item li {
 .service-item {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
   will-change: opacity, transform;
 }
 
@@ -1174,13 +1174,23 @@ body.light .advantage-title span {
   margin: 0 auto;
 }
 
+
 .advantage-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+.advantage-item.visible {
   /*background-color: #032b3f;*/
   border-radius: 12px;
   text-align: left;
   display: flex;
   flex-direction: column;
   gap: 2px;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .advantage-head {
@@ -1630,7 +1640,7 @@ body.light .deep-info-row p {
   }
 
   .tech-item {
-    width: 52px;
+    width: 55px;
   }
 
   .deep-container {
