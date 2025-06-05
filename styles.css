@@ -1614,6 +1614,10 @@ body.light .deep-info-row p {
     display: block;
   }
 
+  .banner {
+    width: auto;
+  }
+
   section {
     /* padding: 2rem 0; */
   }
@@ -1647,6 +1651,10 @@ body.light .deep-info-row p {
 
   .tech-item {
     width: 55px;
+  }
+
+  .banner {
+    width: auto;
   }
 
   .deep-container {
