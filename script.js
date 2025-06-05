@@ -682,7 +682,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let observer;
 
     function init() {
-      const items = document.querySelectorAll('.service-item');
+      const items = document.querySelectorAll('.service-item, .advantage-item');
       if (!items.length) return;
 
       observer = new IntersectionObserver(onIntersection, {
