@@ -46,6 +46,7 @@ body.light {
   max-width: 100%;
   margin-top: 3rem;
   box-sizing: border-box;
+  /* border: 1px solid var(--green); */
 }
 
 .visually-hidden {
@@ -915,7 +916,7 @@ body.light .section-footer .green {
 
 /* Колонка с категорией */
 .tech-column {
-  flex: 0 0 auto; /* Убираем растягивание */
+  /* flex: 0 0 auto; /* Убираем растягивание */ 
   width: auto; /* Ширина по содержимому */
   display: flex;
   flex-direction: column;
