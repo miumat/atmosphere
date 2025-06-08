@@ -1527,6 +1527,28 @@ body.light .deep-info-row p {
 }
 
 @media (max-width: 768px) {
+  
+  .modal-wrapper {
+    margin: 40% auto;
+  }
+
+  .modal-left {
+    display: none;
+  }
+
+  .modal-right {
+    width: 100%;
+  }
+
+  #feedbackForm input {
+    width: 90%;
+  }
+
+  .feedbackForm {
+    display: flex;
+    flex-direction: column;
+  }
+
   .site-header .container {
     justify-content: space-between;
   }
