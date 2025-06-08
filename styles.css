@@ -1529,7 +1529,7 @@ body.light .deep-info-row p {
 @media (max-width: 768px) {
   
   .modal-wrapper {
-    margin: 40% auto;
+    margin: 10% auto;
   }
 
   .modal-left {
