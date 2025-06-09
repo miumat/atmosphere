@@ -158,10 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'feedback.call': "Call",
         'feedback.telegram': "Telegram",
         'feedback.whatsapp': "WhatsApp",
-        'feedback.name': "Your name",
-        'feedback.phone': "Phone number",
-        'feedback.submit_btn': "Contact me",
-        'feedback.agreement': "By clicking 'Contact me' you agree to our Privacy Policy"
+        'feedback.agreement': "By clicking 'Contact me' you agree to our Privacy Policy",
         // ... остальные переводы для английского
       },
       ru: {
@@ -252,10 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'feedback.call': "Звонок",
         'feedback.telegram': "Telegram",
         'feedback.whatsapp': "WhatsApp",
-        'feedback.name': "Ваше имя",
-        'feedback.phone': "+38 (099) 999-99-99",
-        'feedback.submit_btn': "Свяжитесь со мной",
-        'feedback.agreement': "Нажимая кнопку «Свяжитесь со мной», вы соглашаетесь с политикой обработки персональных данных"
+        'feedback.agreement': "Нажимая кнопку «Свяжитесь со мной», вы соглашаетесь с политикой обработки персональных данных",
         // ... остальные переводы для русского
       },
       ua: {
@@ -346,10 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'feedback.call': "Дзвінок",
         'feedback.telegram': "Telegram",
         'feedback.whatsapp': "WhatsApp",
-        'feedback.name': "Ваше ім'я",
-        'feedback.phone': "+38 (099) 999-99-99",
-        'feedback.submit_btn': "Зв'яжіться зі мною",
-        'feedback.agreement': "Натискаючи кнопку «Зв'яжіться зі мною», ви погоджуєтесь з політикою обробки персональних даних"
+        'feedback.agreement': "Натискаючи кнопку «Зв'яжіться зі мною», ви погоджуєтесь з політикою обробки персональних даних",
         // ... остальные переводы для украинского
       }
     };
@@ -487,7 +478,10 @@ document.addEventListener('DOMContentLoaded', () => {
       document.head.appendChild(style);
     }
 
-    return { init };
+    return { 
+      init,
+      translations 
+    };
   })();
 
   // ========== Модуль анимации ==========
@@ -564,8 +558,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ========== Модуль модального окна обратной связи ==========
   const FeedbackModalManager = (() => {
-    let modal, closeBtn, contactBtns, contactMethodInput, form;
+    let modal, closeBtn, contactBtns, contactMethodInput, form, submitBtn;
     let originalViewportContent = '';
+    let translations = {
+      en: {
+        sending: 'Sending...',
+        sendSuccess: 'Thank you!\nYour message has been sent.\n\nWe will contact you shortly.',
+        sendError: 'An error occurred. Please try again.',
+        sendFailed: 'Error submitting the form. Please try again later.',
+        submit: 'Contact me'
+      },
+      ru: {
+        sending: 'Отправка...',
+        sendSuccess: 'Спасибо!\nВаше сообщение отправлено.\n\nМы свяжемся с вами в ближайшее время.',
+        sendError: 'Произошла ошибка. Пожалуйста, попробуйте еще раз.',
+        sendFailed: 'Ошибка при отправке формы. Пожалуйста, попробуйте позже.',
+        submit: 'Свяжитесь со мной'
+      },
+      ua: {
+        sending: 'Надсилання...',
+        sendSuccess: 'Дякуємо!\nВаше повідомлення надіслано.\n\nМи зв’яжемося з вами найближчим часом.',
+        sendError: 'Сталася помилка. Будь ласка, спробуйте ще раз.',
+        sendFailed: 'Помилка під час надсилання форми. Будь ласка, спробуйте пізніше.',
+        submit: 'Зв’яжіться зі мною'
+      }
+    };
+    let currentLang = 'en';
 
     function init() {
       modal = document.getElementById('feedbackModal');
@@ -573,10 +591,10 @@ document.addEventListener('DOMContentLoaded', () => {
       contactBtns = document.querySelectorAll('.contact-btn');
       contactMethodInput = document.getElementById('contactMethod');
       form = document.getElementById('feedbackForm');
+      submitBtn = form.querySelector('button[type="submit"]');
 
       if (!modal || !closeBtn || !form) return;
 
-      // Сохраняем оригинальное значение viewport
       const viewportMeta = document.querySelector('meta[name="viewport"]');
       originalViewportContent = viewportMeta ? viewportMeta.content : '';
 
@@ -600,64 +618,120 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === modal) closeModal();
       });
 
-      // Устанавливаем размер шрифта для полей ввода
       const inputs = form.querySelectorAll('input[type="text"], input[type="tel"]');
       inputs.forEach(input => {
         if (!input.style.fontSize) {
-          input.style.fontSize = '16px'; // Предотвращает зум в iOS
+          input.style.fontSize = '16px';
         }
       });
+
+      document.addEventListener('languageChanged', (e) => {
+        translateModal(e.detail.language);
+      });
+
+      translateModal(getSavedLanguage());
     }
 
     function openModal() {
-      // Устанавливаем viewport, который предотвращает масштабирование
       setViewport('width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
-      
       modal.style.display = 'block';
       setTimeout(() => modal.classList.add('show'), 5);
+      form.reset();
     }
 
     function closeModal() {
       modal.classList.remove('show');
       setTimeout(() => {
         modal.style.display = 'none';
-        // Восстанавливаем оригинальный viewport
         resetViewport();
       }, 300);
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
       e.preventDefault();
-
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
 
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
       }
 
-      // Здесь можно сделать отправку на сервер или другое действие
-      alert('Форма отправлена! \nДанные: ' + JSON.stringify(data, null, 2));
-      closeModal();
+      setSubmitButtonState(true);
+
+      try {
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        const response = await sendFormData(data);
+
+        if (response.ok) {
+          showSuccessMessage();
+          closeModal();
+        } else {
+          showErrorMessage(translations[currentLang].sendFailed);
+        }
+      } catch (error) {
+        console.error('Ошибка:', error);
+        showErrorMessage(translations[currentLang].sendError);
+      } finally {
+        setSubmitButtonState(false);
+      }
+    }
+
+    function setSubmitButtonState(isLoading) {
+      if (isLoading) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `<div class="sentButton"><span class="spinner"></span> ${translations[currentLang].sending}</div>`;
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.textContent = translations[currentLang].submit;
+      }
+    }
+
+    async function sendFormData(data) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          console.log('Данные отправлены:', data);
+          resolve({ ok: true });
+        }, 1500);
+      });
+    }
+
+    function showSuccessMessage() {
+      alert(translations[currentLang].sendSuccess);
+    }
+
+    function showErrorMessage(message) {
+      alert(message);
     }
 
     function setViewport(content) {
       const viewportMeta = document.querySelector('meta[name="viewport"]');
-      if (viewportMeta) {
-        viewportMeta.content = content;
-      }
+      if (viewportMeta) viewportMeta.content = content;
     }
 
     function resetViewport() {
       const viewportMeta = document.querySelector('meta[name="viewport"]');
       if (viewportMeta) {
         viewportMeta.content = originalViewportContent || 'width=device-width, initial-scale=1.0';
-        // Двойной сброс для надежности
         setTimeout(() => {
           viewportMeta.content = originalViewportContent || 'width=device-width, initial-scale=1.0';
         }, 100);
       }
+    }
+
+    function translateModal(lang) {
+      if (!translations[lang]) lang = 'en';
+      currentLang = lang;
+
+      // Обновление текста кнопки, если не в состоянии загрузки
+      if (!submitBtn.disabled) {
+        submitBtn.textContent = translations[lang].submit;
+      }
+    }
+
+    function getSavedLanguage() {
+      const saved = localStorage.getItem('lang');
+      return translations[saved] ? saved : 'en';
     }
 
     return { init };
