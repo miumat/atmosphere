@@ -565,6 +565,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ========== Модуль модального окна обратной связи ==========
   const FeedbackModalManager = (() => {
     let modal, closeBtn, contactBtns, contactMethodInput, form;
+    let originalViewportContent = '';
 
     function init() {
       modal = document.getElementById('feedbackModal');
@@ -574,6 +575,10 @@ document.addEventListener('DOMContentLoaded', () => {
       form = document.getElementById('feedbackForm');
 
       if (!modal || !closeBtn || !form) return;
+
+      // Сохраняем оригинальное значение viewport
+      const viewportMeta = document.querySelector('meta[name="viewport"]');
+      originalViewportContent = viewportMeta ? viewportMeta.content : '';
 
       document.querySelectorAll('.feedback-btn').forEach(btn => {
         btn.addEventListener('click', openModal);
@@ -594,9 +599,20 @@ document.addEventListener('DOMContentLoaded', () => {
       window.addEventListener('click', e => {
         if (e.target === modal) closeModal();
       });
+
+      // Устанавливаем размер шрифта для полей ввода
+      const inputs = form.querySelectorAll('input[type="text"], input[type="tel"]');
+      inputs.forEach(input => {
+        if (!input.style.fontSize) {
+          input.style.fontSize = '16px'; // Предотвращает зум в iOS
+        }
+      });
     }
 
     function openModal() {
+      // Устанавливаем viewport, который предотвращает масштабирование
+      setViewport('width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+      
       modal.style.display = 'block';
       setTimeout(() => modal.classList.add('show'), 5);
     }
@@ -605,6 +621,8 @@ document.addEventListener('DOMContentLoaded', () => {
       modal.classList.remove('show');
       setTimeout(() => {
         modal.style.display = 'none';
+        // Восстанавливаем оригинальный viewport
+        resetViewport();
       }, 300);
     }
 
@@ -622,6 +640,24 @@ document.addEventListener('DOMContentLoaded', () => {
       // Здесь можно сделать отправку на сервер или другое действие
       alert('Форма отправлена! \nДанные: ' + JSON.stringify(data, null, 2));
       closeModal();
+    }
+
+    function setViewport(content) {
+      const viewportMeta = document.querySelector('meta[name="viewport"]');
+      if (viewportMeta) {
+        viewportMeta.content = content;
+      }
+    }
+
+    function resetViewport() {
+      const viewportMeta = document.querySelector('meta[name="viewport"]');
+      if (viewportMeta) {
+        viewportMeta.content = originalViewportContent || 'width=device-width, initial-scale=1.0';
+        // Двойной сброс для надежности
+        setTimeout(() => {
+          viewportMeta.content = originalViewportContent || 'width=device-width, initial-scale=1.0';
+        }, 100);
+      }
     }
 
     return { init };
